@@ -28,13 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.excuseLabel = new System.Windows.Forms.Label();
+            this.resultsLabel = new System.Windows.Forms.Label();
+            this.lastUsedLabel = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
+            this.fileDate = new System.Windows.Forms.Label();
+            this.excuse = new System.Windows.Forms.TextBox();
+            this.results = new System.Windows.Forms.TextBox();
+            this.lastUsed = new System.Windows.Forms.TextBox();
+            this.folder = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
+            this.open = new System.Windows.Forms.Button();
+            this.random = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // excuseLabel
+            // 
+            this.excuseLabel.AutoSize = true;
+            this.excuseLabel.Location = new System.Drawing.Point(12, 9);
+            this.excuseLabel.Name = "excuseLabel";
+            this.excuseLabel.Size = new System.Drawing.Size(42, 13);
+            this.excuseLabel.TabIndex = 0;
+            this.excuseLabel.Text = "Excuse";
+            // 
+            // resultsLabel
+            // 
+            this.resultsLabel.AutoSize = true;
+            this.resultsLabel.Location = new System.Drawing.Point(12, 34);
+            this.resultsLabel.Name = "resultsLabel";
+            this.resultsLabel.Size = new System.Drawing.Size(42, 13);
+            this.resultsLabel.TabIndex = 1;
+            this.resultsLabel.Text = "Results";
+            // 
+            // lastUsedLabel
+            // 
+            this.lastUsedLabel.AutoSize = true;
+            this.lastUsedLabel.Location = new System.Drawing.Point(12, 61);
+            this.lastUsedLabel.Name = "lastUsedLabel";
+            this.lastUsedLabel.Size = new System.Drawing.Size(55, 13);
+            this.lastUsedLabel.TabIndex = 2;
+            this.lastUsedLabel.Text = "Last Used";
+            // 
+            // dateLabel
+            // 
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Location = new System.Drawing.Point(12, 86);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(49, 13);
+            this.dateLabel.TabIndex = 3;
+            this.dateLabel.Text = "File Date";
+            // 
+            // fileDate
+            // 
+            this.fileDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fileDate.Location = new System.Drawing.Point(70, 78);
+            this.fileDate.Name = "fileDate";
+            this.fileDate.Size = new System.Drawing.Size(277, 21);
+            this.fileDate.TabIndex = 4;
+            // 
+            // excuse
+            // 
+            this.excuse.Location = new System.Drawing.Point(70, 6);
+            this.excuse.Name = "excuse";
+            this.excuse.Size = new System.Drawing.Size(277, 20);
+            this.excuse.TabIndex = 5;
+            // 
+            // results
+            // 
+            this.results.Location = new System.Drawing.Point(70, 31);
+            this.results.Name = "results";
+            this.results.Size = new System.Drawing.Size(277, 20);
+            this.results.TabIndex = 6;
+            // 
+            // lastUsed
+            // 
+            this.lastUsed.Location = new System.Drawing.Point(70, 54);
+            this.lastUsed.Name = "lastUsed";
+            this.lastUsed.Size = new System.Drawing.Size(277, 20);
+            this.lastUsed.TabIndex = 7;
+            // 
+            // folder
+            // 
+            this.folder.Location = new System.Drawing.Point(15, 106);
+            this.folder.Name = "folder";
+            this.folder.Size = new System.Drawing.Size(77, 23);
+            this.folder.TabIndex = 8;
+            this.folder.Text = "Folder";
+            this.folder.UseVisualStyleBackColor = true;
+            // 
+            // save
+            // 
+            this.save.Location = new System.Drawing.Point(98, 106);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(77, 23);
+            this.save.TabIndex = 9;
+            this.save.Text = "Save";
+            this.save.UseVisualStyleBackColor = true;
+            // 
+            // open
+            // 
+            this.open.Location = new System.Drawing.Point(181, 106);
+            this.open.Name = "open";
+            this.open.Size = new System.Drawing.Size(85, 23);
+            this.open.TabIndex = 10;
+            this.open.Text = "Open";
+            this.open.UseVisualStyleBackColor = true;
+            // 
+            // random
+            // 
+            this.random.Location = new System.Drawing.Point(272, 106);
+            this.random.Name = "random";
+            this.random.Size = new System.Drawing.Size(75, 23);
+            this.random.TabIndex = 11;
+            this.random.Text = "Random";
+            this.random.UseVisualStyleBackColor = true;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(359, 141);
+            this.Controls.Add(this.random);
+            this.Controls.Add(this.open);
+            this.Controls.Add(this.save);
+            this.Controls.Add(this.folder);
+            this.Controls.Add(this.lastUsed);
+            this.Controls.Add(this.results);
+            this.Controls.Add(this.excuse);
+            this.Controls.Add(this.fileDate);
+            this.Controls.Add(this.dateLabel);
+            this.Controls.Add(this.lastUsedLabel);
+            this.Controls.Add(this.resultsLabel);
+            this.Controls.Add(this.excuseLabel);
+            this.Name = "Form1";
+            this.Text = "Excuse Manager";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label excuseLabel;
+        private System.Windows.Forms.Label resultsLabel;
+        private System.Windows.Forms.Label lastUsedLabel;
+        private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.Label fileDate;
+        private System.Windows.Forms.TextBox excuse;
+        private System.Windows.Forms.TextBox results;
+        private System.Windows.Forms.TextBox lastUsed;
+        private System.Windows.Forms.Button folder;
+        private System.Windows.Forms.Button save;
+        private System.Windows.Forms.Button open;
+        private System.Windows.Forms.Button random;
     }
 }
 
