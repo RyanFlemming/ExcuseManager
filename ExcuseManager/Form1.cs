@@ -13,12 +13,12 @@ namespace ExcuseManager
 {
     public partial class Form1 : Form
     {
-        Excuse excuse;
+        private Excuse excuse = new Excuse();
         bool formChanged = false;
+        private string selectedFolder = "";
         public Form1()
         {
             InitializeComponent();
-            excuse = new Excuse();
         }
 
         // Handle text changed events
@@ -59,6 +59,18 @@ namespace ExcuseManager
         {
             excuse.LastUsed = lastUsed.Value;
             UpdateForm(true);
+        }
+
+        private void folder_Click(object sender, EventArgs e)
+        {
+            folderOpen.SelectedPath = selectedFolder;
+            if (folderOpen.ShowDialog() == DialogResult.OK)
+            {
+                selectedFolder = folderOpen.SelectedPath;
+                save.Enabled = true;
+                open.Enabled = true;
+                random.Enabled = true;
+            }
         }
     }
 }

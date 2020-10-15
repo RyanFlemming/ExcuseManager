@@ -40,6 +40,7 @@
             this.open = new System.Windows.Forms.Button();
             this.random = new System.Windows.Forms.Button();
             this.lastUsed = new System.Windows.Forms.DateTimePicker();
+            this.folderOpen = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // excuseLabel
@@ -110,9 +111,11 @@
             this.folder.TabIndex = 8;
             this.folder.Text = "Folder";
             this.folder.UseVisualStyleBackColor = true;
+            this.folder.Click += new System.EventHandler(this.folder_Click);
             // 
             // save
             // 
+            this.save.Enabled = false;
             this.save.Location = new System.Drawing.Point(98, 106);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(77, 23);
@@ -122,6 +125,7 @@
             // 
             // open
             // 
+            this.open.Enabled = false;
             this.open.Location = new System.Drawing.Point(181, 106);
             this.open.Name = "open";
             this.open.Size = new System.Drawing.Size(85, 23);
@@ -131,6 +135,7 @@
             // 
             // random
             // 
+            this.random.Enabled = false;
             this.random.Location = new System.Drawing.Point(272, 106);
             this.random.Name = "random";
             this.random.Size = new System.Drawing.Size(75, 23);
@@ -163,7 +168,10 @@
             this.Controls.Add(this.lastUsedLabel);
             this.Controls.Add(this.resultsLabel);
             this.Controls.Add(this.excuseLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Excuse Manager";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,6 +192,7 @@
         private System.Windows.Forms.Button open;
         private System.Windows.Forms.Button random;
         private System.Windows.Forms.DateTimePicker lastUsed;
+        private System.Windows.Forms.FolderBrowserDialog folderOpen;
     }
 }
 
