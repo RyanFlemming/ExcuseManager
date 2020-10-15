@@ -80,7 +80,7 @@ namespace ExcuseManager
         {
             if (String.IsNullOrEmpty(description.Text) || String.IsNullOrEmpty(results.Text))
             {
-                MessageBox.Show("Excuse and result fields are empty", "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Please fill both Excuse and Results", "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             saveFile.InitialDirectory = selectedFolder;
