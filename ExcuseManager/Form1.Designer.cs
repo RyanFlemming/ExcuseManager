@@ -33,13 +33,13 @@
             this.lastUsedLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.fileDate = new System.Windows.Forms.Label();
-            this.excuse = new System.Windows.Forms.TextBox();
+            this.description = new System.Windows.Forms.TextBox();
             this.results = new System.Windows.Forms.TextBox();
-            this.lastUsed = new System.Windows.Forms.TextBox();
             this.folder = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
             this.open = new System.Windows.Forms.Button();
             this.random = new System.Windows.Forms.Button();
+            this.lastUsed = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // excuseLabel
@@ -86,12 +86,13 @@
             this.fileDate.Size = new System.Drawing.Size(277, 21);
             this.fileDate.TabIndex = 4;
             // 
-            // excuse
+            // description
             // 
-            this.excuse.Location = new System.Drawing.Point(70, 6);
-            this.excuse.Name = "excuse";
-            this.excuse.Size = new System.Drawing.Size(277, 20);
-            this.excuse.TabIndex = 5;
+            this.description.Location = new System.Drawing.Point(70, 6);
+            this.description.Name = "description";
+            this.description.Size = new System.Drawing.Size(277, 20);
+            this.description.TabIndex = 5;
+            this.description.TextChanged += new System.EventHandler(this.description_TextChanged);
             // 
             // results
             // 
@@ -99,13 +100,7 @@
             this.results.Name = "results";
             this.results.Size = new System.Drawing.Size(277, 20);
             this.results.TabIndex = 6;
-            // 
-            // lastUsed
-            // 
-            this.lastUsed.Location = new System.Drawing.Point(70, 54);
-            this.lastUsed.Name = "lastUsed";
-            this.lastUsed.Size = new System.Drawing.Size(277, 20);
-            this.lastUsed.TabIndex = 7;
+            this.results.TextChanged += new System.EventHandler(this.results_TextChanged);
             // 
             // folder
             // 
@@ -143,18 +138,26 @@
             this.random.Text = "Random";
             this.random.UseVisualStyleBackColor = true;
             // 
+            // lastUsed
+            // 
+            this.lastUsed.Location = new System.Drawing.Point(73, 54);
+            this.lastUsed.Name = "lastUsed";
+            this.lastUsed.Size = new System.Drawing.Size(200, 20);
+            this.lastUsed.TabIndex = 12;
+            this.lastUsed.ValueChanged += new System.EventHandler(this.lastUsed_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 141);
+            this.Controls.Add(this.lastUsed);
             this.Controls.Add(this.random);
             this.Controls.Add(this.open);
             this.Controls.Add(this.save);
             this.Controls.Add(this.folder);
-            this.Controls.Add(this.lastUsed);
             this.Controls.Add(this.results);
-            this.Controls.Add(this.excuse);
+            this.Controls.Add(this.description);
             this.Controls.Add(this.fileDate);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.lastUsedLabel);
@@ -174,13 +177,13 @@
         private System.Windows.Forms.Label lastUsedLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label fileDate;
-        private System.Windows.Forms.TextBox excuse;
+        private System.Windows.Forms.TextBox description;
         private System.Windows.Forms.TextBox results;
-        private System.Windows.Forms.TextBox lastUsed;
         private System.Windows.Forms.Button folder;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button open;
         private System.Windows.Forms.Button random;
+        private System.Windows.Forms.DateTimePicker lastUsed;
     }
 }
 
