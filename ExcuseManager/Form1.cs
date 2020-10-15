@@ -19,6 +19,8 @@ namespace ExcuseManager
         public Form1()
         {
             InitializeComponent();
+            // Set LastUsed to default val (today's date)
+            excuse.LastUsed = lastUsed.Value;
         }
 
         // Handle text changed events
@@ -63,13 +65,32 @@ namespace ExcuseManager
 
         private void folder_Click(object sender, EventArgs e)
         {
-            folderOpen.SelectedPath = selectedFolder;
-            if (folderOpen.ShowDialog() == DialogResult.OK)
+            openFolder.SelectedPath = selectedFolder;
+            if (openFolder.ShowDialog() == DialogResult.OK)
             {
-                selectedFolder = folderOpen.SelectedPath;
+                selectedFolder = openFolder.SelectedPath;
                 save.Enabled = true;
                 open.Enabled = true;
                 random.Enabled = true;
+                folder.Enabled = false;
+            }
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(description.Text) || String.IsNullOrEmpty(results.Text))
+            {
+                MessageBox.Show("Excuse and result fields are empty", "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            saveFile.InitialDirectory = selectedFolder;
+            saveFile.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFile.FileName = description.Text + ".txt";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                excuse.Save(saveFile.FileName);
+                UpdateForm(false);
+                MessageBox.Show("Excuse saved");
             }
         }
     }

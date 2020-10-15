@@ -51,13 +51,13 @@ namespace ExcuseManager
 
 
         // Persist changes, close stream and dispose
-        private void SaveFile(string fileName)
+         public void Save(string fileName)
         {
             using (StreamWriter sw = new StreamWriter(fileName))
             {
                 sw.WriteLine(Description);
                 sw.WriteLine(Results);
-                sw.WriteLine(LastUsed);
+                sw.WriteLine(LastUsed.ToShortDateString());
             }
         }
     }

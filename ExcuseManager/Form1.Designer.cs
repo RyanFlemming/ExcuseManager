@@ -40,7 +40,8 @@
             this.open = new System.Windows.Forms.Button();
             this.random = new System.Windows.Forms.Button();
             this.lastUsed = new System.Windows.Forms.DateTimePicker();
-            this.folderOpen = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFolder = new System.Windows.Forms.FolderBrowserDialog();
+            this.saveFile = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // excuseLabel
@@ -122,6 +123,7 @@
             this.save.TabIndex = 9;
             this.save.Text = "Save";
             this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // open
             // 
@@ -149,6 +151,7 @@
             this.lastUsed.Name = "lastUsed";
             this.lastUsed.Size = new System.Drawing.Size(200, 20);
             this.lastUsed.TabIndex = 12;
+            this.lastUsed.Value = new System.DateTime(2020, 10, 15, 0, 0, 0, 0);
             this.lastUsed.ValueChanged += new System.EventHandler(this.lastUsed_ValueChanged);
             // 
             // Form1
@@ -192,7 +195,8 @@
         private System.Windows.Forms.Button open;
         private System.Windows.Forms.Button random;
         private System.Windows.Forms.DateTimePicker lastUsed;
-        private System.Windows.Forms.FolderBrowserDialog folderOpen;
+        private System.Windows.Forms.FolderBrowserDialog openFolder;
+        private System.Windows.Forms.SaveFileDialog saveFile;
     }
 }
 
