@@ -63,6 +63,7 @@ namespace ExcuseManager
             UpdateForm(true);
         }
 
+        // Set folder path for saving
         private void folder_Click(object sender, EventArgs e)
         {
             openFolder.SelectedPath = selectedFolder;
@@ -76,6 +77,7 @@ namespace ExcuseManager
             }
         }
 
+        // Attempt to save file if input fields have been filled
         private void save_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(description.Text) || String.IsNullOrEmpty(results.Text))

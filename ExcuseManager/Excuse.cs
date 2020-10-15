@@ -57,6 +57,7 @@ namespace ExcuseManager
             {
                 sw.WriteLine(Description);
                 sw.WriteLine(Results);
+                // Writes date without time
                 sw.WriteLine(LastUsed.ToShortDateString());
             }
         }
