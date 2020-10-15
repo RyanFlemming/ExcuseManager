@@ -16,6 +16,7 @@ namespace ExcuseManager
         private Excuse excuse = new Excuse();
         bool formChanged = false;
         private string selectedFolder = "";
+        private const string filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
         public Form1()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace ExcuseManager
                 {
                     fileDate.Text = File.GetLastWriteTime(excuse.ExcusePath).ToString();
                     this.Text = "Excuse Manager";
-                } 
+                }
             }
             else
             {
@@ -86,7 +87,7 @@ namespace ExcuseManager
                 return;
             }
             saveFile.InitialDirectory = selectedFolder;
-            saveFile.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFile.Filter = filter;
             saveFile.FileName = description.Text + ".txt";
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
@@ -94,6 +95,37 @@ namespace ExcuseManager
                 UpdateForm(false);
                 MessageBox.Show("Excuse saved");
             }
+        }
+
+        // Open a file
+        private void open_Click(object sender, EventArgs e)
+        {
+            if (CheckChanged())
+            {
+                openFile.InitialDirectory = selectedFolder;
+                openFile.Filter = filter;
+                openFile.FileName = description.Text + ".txt";
+                DialogResult result = openFile.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    excuse = new Excuse(openFile.FileName);
+                    UpdateForm(false);
+                }
+            }
+        }
+
+        // Ask user if they want to save changes, or go back to parent window
+        private bool CheckChanged()
+        {
+            if (formChanged)
+            {
+                DialogResult result = MessageBox.Show("The current excuse has not been saved. Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

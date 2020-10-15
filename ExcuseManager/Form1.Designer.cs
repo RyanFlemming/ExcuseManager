@@ -42,6 +42,7 @@
             this.lastUsed = new System.Windows.Forms.DateTimePicker();
             this.openFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFile = new System.Windows.Forms.SaveFileDialog();
+            this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // excuseLabel
@@ -134,6 +135,7 @@
             this.open.TabIndex = 10;
             this.open.Text = "Open";
             this.open.UseVisualStyleBackColor = true;
+            this.open.Click += new System.EventHandler(this.open_Click);
             // 
             // random
             // 
@@ -153,6 +155,10 @@
             this.lastUsed.TabIndex = 12;
             this.lastUsed.Value = new System.DateTime(2020, 10, 15, 0, 0, 0, 0);
             this.lastUsed.ValueChanged += new System.EventHandler(this.lastUsed_ValueChanged);
+            // 
+            // openFile
+            // 
+            this.openFile.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -197,6 +203,7 @@
         private System.Windows.Forms.DateTimePicker lastUsed;
         private System.Windows.Forms.FolderBrowserDialog openFolder;
         private System.Windows.Forms.SaveFileDialog saveFile;
+        private System.Windows.Forms.OpenFileDialog openFile;
     }
 }
 
