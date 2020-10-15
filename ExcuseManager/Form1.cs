@@ -14,6 +14,7 @@ namespace ExcuseManager
     public partial class Form1 : Form
     {
         private Excuse excuse = new Excuse();
+        Random randomFile = new Random();
         bool formChanged = false;
         private string selectedFolder = "";
         private const string filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -126,6 +127,17 @@ namespace ExcuseManager
                 }
             }
             return true;
+        }
+
+        // Opens random file from selected folder field and populate fields
+        // Heavy lifting is done in the constructor
+        private void random_Click(object sender, EventArgs e)
+        {
+            if (CheckChanged())
+            {
+                excuse = new Excuse(randomFile, selectedFolder);
+                UpdateForm(false);
+            }
         }
     }
 }

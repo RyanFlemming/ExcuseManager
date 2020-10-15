@@ -146,6 +146,7 @@
             this.random.TabIndex = 11;
             this.random.Text = "Random";
             this.random.UseVisualStyleBackColor = true;
+            this.random.Click += new System.EventHandler(this.random_Click);
             // 
             // lastUsed
             // 
