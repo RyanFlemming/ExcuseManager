@@ -38,6 +38,7 @@ namespace ExcuseManager
         // Then close stream and dispose
         public void OpenFile(string excusePath)
         {
+            this.ExcusePath = excusePath;
             BinaryFormatter formatter = new BinaryFormatter();
             Excuse tempExcuse;
 
