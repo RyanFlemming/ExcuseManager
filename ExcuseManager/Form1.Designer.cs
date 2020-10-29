@@ -154,7 +154,7 @@
             this.lastUsed.Name = "lastUsed";
             this.lastUsed.Size = new System.Drawing.Size(200, 20);
             this.lastUsed.TabIndex = 12;
-            this.lastUsed.Value = new System.DateTime(2020, 10, 15, 0, 0, 0, 0);
+            this.lastUsed.Value = new System.DateTime(2020, 10, 29, 20, 49, 26, 0);
             this.lastUsed.ValueChanged += new System.EventHandler(this.lastUsed_ValueChanged);
             // 
             // openFileDialog

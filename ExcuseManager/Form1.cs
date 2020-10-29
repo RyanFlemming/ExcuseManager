@@ -6,7 +6,9 @@ namespace ExcuseManager
 {
     public partial class Form1 : Form
     {
-        private Excuse excuse = new Excuse();
+
+        private IExcuse excuse;
+        //private Excuse excuse = new Excuse();
         Random randomFile = new Random();
         bool formChanged = false;
         private string selectedFolder = "";
@@ -14,6 +16,7 @@ namespace ExcuseManager
         public Form1()
         {
             InitializeComponent();
+            excuse = Factory.CreateExcuse();
             // Set LastUsed to default val (today's date)
             excuse.LastUsed = lastUsed.Value;
         }
@@ -102,7 +105,8 @@ namespace ExcuseManager
                 DialogResult result = openFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    excuse = new Excuse(openFileDialog.FileName);
+                    //excuse = new Excuse(openFileDialog.FileName);
+                    excuse = Factory.CreateExcuse(openFileDialog.FileName);
                     UpdateForm(false);
                 }
             }
@@ -128,7 +132,8 @@ namespace ExcuseManager
         {
             if (CheckChanged())
             {
-                excuse = new Excuse(randomFile, selectedFolder);
+                //excuse = new Excuse(randomFile, selectedFolder);
+                excuse = Factory.CreateExcuse(randomFile, selectedFolder);
                 UpdateForm(false);
             }
         }
