@@ -10,6 +10,8 @@ namespace ExcuseManager
 {
     public static class Factory
     {
+        // These methods mirror the 3 constructors on Excuse
+        // An excuse and an instance of BinaryFormatter is newed up in each
         public static IExcuse CreateExcuse()
         {
             return new Excuse(CreateFormatter());
@@ -19,16 +21,15 @@ namespace ExcuseManager
         {
             return new Excuse(path, CreateFormatter());
         }
+        public static IExcuse CreateExcuse(Random randomFile, string selectedFolder)
+        {
+            return new Excuse(randomFile, selectedFolder, CreateFormatter());
+        }
 
         public static IFormatter CreateFormatter()
         {
             IFormatter formatter = new BinaryFormatter();
             return formatter;
-        }
-
-        public static IExcuse CreateExcuse(Random randomFile, string selectedFolder)
-        {
-            return new Excuse(randomFile, selectedFolder, CreateFormatter());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ExcuseManager
     {
 
         private IExcuse excuse;
-        //private Excuse excuse = new Excuse();
+        // To do: Replace with call to Factory
         Random randomFile = new Random();
         bool formChanged = false;
         private string selectedFolder = "";
@@ -22,9 +22,9 @@ namespace ExcuseManager
         }
 
         // Handle text changed events
-
         private void UpdateForm(bool changed)
         {
+            // To do: Remove * from recently opened files
             if (!changed)
             {
                 this.description.Text = excuse.Description;
@@ -94,7 +94,8 @@ namespace ExcuseManager
             }
         }
 
-        // Open a file
+        // If values haven't changed, display open file dialog and set properties if a file is chosen
+        // Otherwise, call CheckChanged
         private void open_Click(object sender, EventArgs e)
         {
             if (CheckChanged())
@@ -105,7 +106,6 @@ namespace ExcuseManager
                 DialogResult result = openFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    //excuse = new Excuse(openFileDialog.FileName);
                     excuse = Factory.CreateExcuse(openFileDialog.FileName);
                     UpdateForm(false);
                 }
@@ -132,7 +132,6 @@ namespace ExcuseManager
         {
             if (CheckChanged())
             {
-                //excuse = new Excuse(randomFile, selectedFolder);
                 excuse = Factory.CreateExcuse(randomFile, selectedFolder);
                 UpdateForm(false);
             }

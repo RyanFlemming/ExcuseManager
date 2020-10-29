@@ -32,9 +32,8 @@ namespace ExcuseManager
             OpenFile(excusePath);
         }
 
-        // Open random file
-        // Create array of files from path with .txt ext
-        // Then choose random element in array and open file
+
+        // Create array of files from path, then open random file
         public Excuse(Random random, string path, IFormatter formatter)
         {
             this.formatter = formatter;
@@ -43,8 +42,9 @@ namespace ExcuseManager
         }
 
 
-        // Set properties to be written to the form
-        // Then close stream and dispose
+        // Set path of the excuse, then create a temp excuse
+        // Use our instance of formatter to deserialize our unicode file
+        // Finally, set object properties
         public void OpenFile(string excusePath)
         {
             ExcusePath = excusePath;
@@ -60,7 +60,7 @@ namespace ExcuseManager
         }
 
 
-        // Persist changes, close stream and dispose
+        // Serialize excuse object to specified path
         public void Save(string fileName)
         {
             using (Stream output = File.OpenWrite(fileName))
