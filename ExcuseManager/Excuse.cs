@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ExcuseManager
 {
+    [Serializable]
     class Excuse
     {
         public string Description { get; set; }
@@ -31,7 +29,7 @@ namespace ExcuseManager
         // Then choose random element in array and open file
         public Excuse(Random random, string path)
         {
-            string[] fileNames = Directory.GetFiles(path, "*.txt");
+            string[] fileNames = Directory.GetFiles(path, "*.excuse");
             OpenFile(fileNames[random.Next(fileNames.Length)]);
         }
 
@@ -40,25 +38,26 @@ namespace ExcuseManager
         // Then close stream and dispose
         public void OpenFile(string excusePath)
         {
-            this.ExcusePath = excusePath;
-            using (StreamReader sr = new StreamReader(ExcusePath))
+            BinaryFormatter formatter = new BinaryFormatter();
+            Excuse tempExcuse;
+
+            using (Stream input = File.OpenRead(excusePath))
             {
-                Description = sr.ReadLine();
-                Results = sr.ReadLine();
-                LastUsed = Convert.ToDateTime(sr.ReadLine());
+                tempExcuse = (Excuse)formatter.Deserialize(input);
             }
+            Description = tempExcuse.Description;
+            Results = tempExcuse.Results;
+            LastUsed = tempExcuse.LastUsed;
         }
 
 
         // Persist changes, close stream and dispose
-         public void Save(string fileName)
+        public void Save(string fileName)
         {
-            using (StreamWriter sw = new StreamWriter(fileName))
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (Stream output = File.OpenWrite(fileName))
             {
-                sw.WriteLine(Description);
-                sw.WriteLine(Results);
-                // Writes date without time
-                sw.WriteLine(LastUsed.ToShortDateString());
+                formatter.Serialize(output, this);
             }
         }
     }

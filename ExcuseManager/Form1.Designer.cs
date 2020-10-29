@@ -40,9 +40,9 @@
             this.open = new System.Windows.Forms.Button();
             this.random = new System.Windows.Forms.Button();
             this.lastUsed = new System.Windows.Forms.DateTimePicker();
-            this.openFolder = new System.Windows.Forms.FolderBrowserDialog();
-            this.saveFile = new System.Windows.Forms.SaveFileDialog();
-            this.openFile = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // excuseLabel
@@ -157,9 +157,13 @@
             this.lastUsed.Value = new System.DateTime(2020, 10, 15, 0, 0, 0, 0);
             this.lastUsed.ValueChanged += new System.EventHandler(this.lastUsed_ValueChanged);
             // 
-            // openFile
+            // openFileDialog
             // 
-            this.openFile.FileName = "openFileDialog1";
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "saveFileDialog";
             // 
             // Form1
             // 
@@ -202,9 +206,9 @@
         private System.Windows.Forms.Button open;
         private System.Windows.Forms.Button random;
         private System.Windows.Forms.DateTimePicker lastUsed;
-        private System.Windows.Forms.FolderBrowserDialog openFolder;
-        private System.Windows.Forms.SaveFileDialog saveFile;
-        private System.Windows.Forms.OpenFileDialog openFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.FolderBrowserDialog openFolderDialog;
     }
 }
 

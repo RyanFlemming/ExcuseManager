@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExcuseManager
@@ -17,7 +10,7 @@ namespace ExcuseManager
         Random randomFile = new Random();
         bool formChanged = false;
         private string selectedFolder = "";
-        private const string filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+        private const string filter = "Excuse files (*.excuse)|*.excuse";
         public Form1()
         {
             InitializeComponent();
@@ -68,10 +61,10 @@ namespace ExcuseManager
         // Set folder path for saving
         private void folder_Click(object sender, EventArgs e)
         {
-            openFolder.SelectedPath = selectedFolder;
-            if (openFolder.ShowDialog() == DialogResult.OK)
+            openFolderDialog.SelectedPath = selectedFolder;
+            if (openFolderDialog.ShowDialog() == DialogResult.OK)
             {
-                selectedFolder = openFolder.SelectedPath;
+                selectedFolder = openFolderDialog.SelectedPath;
                 save.Enabled = true;
                 open.Enabled = true;
                 random.Enabled = true;
@@ -87,12 +80,12 @@ namespace ExcuseManager
                 MessageBox.Show("Please fill both Excuse and Results", "Unable to save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            saveFile.InitialDirectory = selectedFolder;
-            saveFile.Filter = filter;
-            saveFile.FileName = description.Text + ".txt";
-            if (saveFile.ShowDialog() == DialogResult.OK)
+            saveFileDialog.InitialDirectory = selectedFolder;
+            saveFileDialog.Filter = filter;
+            saveFileDialog.FileName = description.Text + ".excuse";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                excuse.Save(saveFile.FileName);
+                excuse.Save(saveFileDialog.FileName);
                 UpdateForm(false);
                 MessageBox.Show("Excuse saved");
             }
@@ -103,13 +96,13 @@ namespace ExcuseManager
         {
             if (CheckChanged())
             {
-                openFile.InitialDirectory = selectedFolder;
-                openFile.Filter = filter;
-                openFile.FileName = description.Text + ".txt";
-                DialogResult result = openFile.ShowDialog();
+                openFileDialog.InitialDirectory = selectedFolder;
+                openFileDialog.Filter = filter;
+                openFileDialog.FileName = description.Text + ".excuse";
+                DialogResult result = openFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    excuse = new Excuse(openFile.FileName);
+                    excuse = new Excuse(openFileDialog.FileName);
                     UpdateForm(false);
                 }
             }
